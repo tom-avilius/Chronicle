@@ -1,0 +1,27 @@
+{
+  "name": "chronicle",
+  "version": "1.0.0",
+  "description": "A cross platform folder management system with current focus the on downloads folder.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tom-avilius/Chronicle.git"
+  },
+  "keywords": [
+    "folder",
+    "management"
+  ],
+  "author": "tom_avilius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tom-avilius/Chronicle/issues"
+  },
+  "homepage": "https://github.com/tom-avilius/Chronicle#readme",
+  "devDependencies": {
+    "electron": "^23.1.1"
+  },
+  "dependencies": {}
+}
