@@ -31,6 +31,8 @@ class importDirectory {
 
     // calling create directory info to create individual details of every item inside directoryPath
     this.directoryInfo = this.createDirectoryInfo();
+
+    this.extensionList = this.getExtensions();
   }
 
 
@@ -84,10 +86,60 @@ class importDirectory {
   }
 
 
+  // function to return all extensions that occur inside the directoryPath using the directoryInfo
+  getExtensions = () => {
+
+    // initializing empty object to store extensions
+    var extensions = [];
+
+    // looping through every item of the directory
+    this.directoryItems.forEach(item => {
+
+      // getting the individual item of directoryInfo
+      const element = this.directoryInfo[item];
+
+      // checking if the element specified is a directory
+      if (element.isDirectory) {} else {
+
+        // checking if the extension specified is already present
+        if (extensions.includes(element.extension)) {} else {
+
+          // adding the extension
+          extensions = [
+
+            // previous extensions themselves
+            ...extensions,
+
+            //adding the extension that does not exist
+            element.extension
+          ];
+        }
+      }
+    });
+
+    return extensions;
+  }
+
+
+  // function to group elements inside the directory info according to their extensions
+  // it returns an object of objects with the following details
+  // object name is the extension itself and details it contains:
+  // number of occurences
+  // extension name including the dot
+  // type of extension example png , jpg are all images
+  // this list will not include any directory
+
+
   // function to print details of individual items inside the directory (logs this.directoryPath)
   listDirectoryInfo = () => {
 
     console.log(this.directoryInfo);
+  }
+
+  // function to log the list of all extensions present
+  listExtensionsList = () => {
+
+    console.log(this.extensionList);
   }
 }
 
@@ -106,8 +158,9 @@ const createMainWidow = () => {
   // centering the main window
   mainWindow.center();
 
-  const downlaodsDirectory = new importDirectory('C:/users/'+username+'/Downloads/');
+  const downlaodsDirectory = new importDirectory('C:/users/'+username+'/Downloads');
   downlaodsDirectory.listDirectoryInfo();
+  downlaodsDirectory.listExtensionsList();
 }
 
 
