@@ -14,63 +14,81 @@ const os = require('os');
 const path = require('path');
 
 // user information variables
-const username = os.userInfo();
+const username = os.userInfo().username;
 const operatingSystem = os.platform();
 
 // ----------------------END OF IMPORTS-------------------------
 
 
-// function to load all files inside a specified folder
-// it will return an object that will store the details of individual files inside the folder
-const importDirectory = (directoryPath = "") => {
-  
-  // reading all files inside the directory specified in the directory path
-  return fs.readdirSync(directoryPath);
-}
+class importDirectory {
+
+  constructor(directoryPath = '') {
+
+    this.directoryPath = directoryPath;
+
+    // calling import directory to get the contents of the directory specified
+    this.directoryItems = this.getDirectory(this.directoryPath);
+
+    // calling create directory info to create individual details of every item inside directoryPath
+    this.directoryInfo = this.createDirectoryInfo();
+  }
 
 
-// function to create objects from the list of files in a directory
-// it accepts an object and returns an object of objects with the following information
-// file basename
-// file extension
-// absolute path
-// file size in megabytes
-// boolean 0 for file being a directory.
-const createDirectoryInfo = (directoryPath = "") => {
-
-  // calling import directory to get the contents of the directory specified
-  const directory = importDirectory(directoryPath);
-
-  // initializing an empty object to store directory info
-  var directoryInfo = {};
-
-  // reading every file inside the directory and creating individual info objects, finally storing them inside the directoryInfo
-  directory.forEach(file => {
+  // function to load all files inside a specified folder
+  // it will return an object that will store the details of individual files inside the folder
+  getDirectory = () => {
     
-    const absolutePath = directoryPath + "/" +file
-    const fileStat = fs.statSync(absolutePath);
-    const fileSize = (fileStat.size) / (1024*1024);
-    const fileExtension = path.extname(file);
-    const fileName = path.basename(file, fileExtension);
-    const isDirectory = fileStat.isDirectory();
+    // reading all files inside the directory specified in the directory path
+    return fs.readdirSync(this.directoryPath);
+  }
 
-    directoryInfo = {
+  // function to create objects from the list of files in a directory
+  // it accepts an object and returns an object of objects with the following information
+  // file basename
+  // file extension
+  // absolute path
+  // file size in megabytes
+  // boolean 0 for file being a directory.
+  createDirectoryInfo = () => {
 
-      // the directory info itself
-      ...directoryInfo, 
-    
-      [file]: {
+    // initializing an empty object to store directory info
+    var directoryInfo = {};
 
-        'name': fileName,
-        'extension': fileExtension,
-        'path': absolutePath,
-        'size': fileSize,
-        'isDirectory': isDirectory,
-      },
-    };
-  });
+    // reading every file inside the directory and creating individual info objects, finally storing them inside the directoryInfo
+    this.directoryItems.forEach(file => {
+      
+      const absolutePath = this.directoryPath + "/" +file
+      const fileStat = fs.statSync(absolutePath);
+      const fileSize = (fileStat.size) / (1024*1024);
+      const fileExtension = path.extname(file);
+      const fileName = path.basename(file, fileExtension);
+      const isDirectory = fileStat.isDirectory();
 
-  return directoryInfo;
+      directoryInfo = {
+
+        // the directory info itself
+        ...directoryInfo, 
+      
+        [file]: {
+
+          'name': fileName,
+          'extension': fileExtension,
+          'path': absolutePath,
+          'size': fileSize,
+          'isDirectory': isDirectory,
+        },
+      };
+    });
+
+    return directoryInfo;
+  }
+
+
+  // function to print details of individual items inside the directory (logs this.directoryPath)
+  listDirectoryInfo = () => {
+
+    console.log(this.directoryInfo);
+  }
 }
 
 
@@ -88,8 +106,8 @@ const createMainWidow = () => {
   // centering the main window
   mainWindow.center();
 
-  directoryInfo = createDirectoryInfo('C:/users/aaars/Downloads');
-  console.log(directoryInfo);
+  const downlaodsDirectory = new importDirectory('C:/users/'+username+'/Downloads/');
+  downlaodsDirectory.listDirectoryInfo();
 }
 
 
