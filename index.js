@@ -20,7 +20,8 @@ const operatingSystem = os.platform();
 // ----------------------END OF IMPORTS-------------------------
 
 
-class importDirectory {
+// class to manage the whole directory
+class ImportDirectory {
 
   constructor(directoryPath = '') {
 
@@ -183,7 +184,7 @@ class importDirectory {
   // function to judge the type of file using its extension
   judgeByType = () => {
 
-    
+
   }
 
 
@@ -205,7 +206,43 @@ class importDirectory {
   }
 }
 
+// class to read, write json files.
+class Json {
 
+  constructor (filePath = "", action = {read: false}) {
+
+    this.filePath = path.resolve(filePath);
+    this.fileContents = {};
+
+    if(action.read == true) {
+
+      this.fileContents = this.readFile();
+    }
+  }
+
+  // function to read file synchronously
+  readFile = () => {
+
+    try {
+
+      // reading the file
+      const jsonString = fs.readFileSync(this.filePath, {encoding:'utf-8'});
+      const jsonData = JSON.parse(jsonString);
+      return jsonData;
+    } catch (err) {
+
+      console.log("Error reading or parsing the file at " +this.filePath);
+      console.error(err);
+    }
+  }
+
+
+  // function to list the fileContents
+  listFileContents = () => {
+
+    console.log(this.fileContents);
+  }
+}
 
 
 // --------------------------------------------------------------------------------------------------
@@ -220,10 +257,12 @@ const createMainWidow = () => {
   // centering the main window
   mainWindow.center();
 
-  const downlaodsDirectory = new importDirectory('C:/users/'+username+'/Downloads');
+  const downlaodsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
   // downlaodsDirectory.listDirectoryInfo();
   // downlaodsDirectory.listExtensionsList();
-  downlaodsDirectory.listExtensionsInfo();
+  // downlaodsDirectory.listExtensionsInfo();
+  const extensions = new Json('./components/assets/all-file-extensions.json', {read: true});
+  extensions.listFileContents();
 }
 
 
