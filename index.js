@@ -307,19 +307,16 @@ class Json {
 // this method is called when the app is ready.
 const createMainWidow = () => {
 
+  const downlaodsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
+  downlaodsDirectory.sortDirectory();
+
   // creating the main browser window
   const mainWindow = new BrowserWindow();
 
   // centering the main window
   mainWindow.center();
 
-  const downlaodsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
-  // downlaodsDirectory.listDirectoryInfo();
-  // downlaodsDirectory.listExtensionsList();
-  downlaodsDirectory.listExtensionsInfo();
-  // const extensions = new Json('./components/assets/extensions-list.json', {read: true});
-  // console.log(extensions.fileContents)
-  downlaodsDirectory.sortDirectory();
+  mainWindow.setMenu(null);
 }
 
 
