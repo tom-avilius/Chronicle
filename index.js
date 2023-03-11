@@ -134,7 +134,7 @@ class ImportDirectory {
   getFileType = (extension="") => {
 
   return this.possibleExtensions[extension.replace('.', '').toLowerCase()];
-}
+  }
 
 
   // function to group elements inside the directory info according to their extensions
@@ -162,6 +162,7 @@ class ImportDirectory {
 
       // calling getFileType to know the type of extension
       var fileType = this.getFileType(extension)+'';
+      // converting the fileType to Camel Case string
       const start = fileType.charAt(0).toUpperCase()
       fileType = start+fileType.substring(1);
 
@@ -199,6 +200,35 @@ class ImportDirectory {
   }
 
 
+  // function to create new folder if it does not already exist
+  createFolder = (name="") => {
+
+    try {
+
+        if (!fs.accessSync(this.directoryPath+'/'+name)) {
+
+        fs.mkdirSync(this.directoryPath+'/'+name);
+      }
+    } catch (err) {
+
+      console.log('Error while creating folder at ' +this.directoryPath+'/'+name);
+      console.log(err);
+    }
+  }
+
+
+  // function to create folders and move files according to their types
+  // it will create a folder with the same name as that of the file type
+  // and move the file with the same type there
+  sortDirectory = () => {
+
+    Object.keys(this.extensionInfo).forEach( (key, index) => {
+
+      
+    } );
+  }
+
+
   // function to print details of individual items inside the directory (logs this.directoryPath)
   listDirectoryInfo = () => {
 
@@ -211,6 +241,7 @@ class ImportDirectory {
     console.log(this.extensionList);
   }
 
+  // function to log the list of all extensionsInfo
   listExtensionsInfo = () => {
 
     console.log(this.extensionInfo);
