@@ -32,7 +32,11 @@ class importDirectory {
     // calling create directory info to create individual details of every item inside directoryPath
     this.directoryInfo = this.createDirectoryInfo();
 
+    // calling getExtensions to create list of extensions that occur within the directory
     this.extensionList = this.getExtensions();
+
+    // calling group by extension to group directory items according to their extensions
+    this.extensionInfo = this.groupByExtension();
   }
 
 
@@ -128,6 +132,55 @@ class importDirectory {
   // extension name including the dot
   // type of extension example png , jpg are all images
   // this list will not include any directory
+  groupByExtension = () => {
+
+    // initializing object to store objects containing same extension
+    var extensionInfo = {};
+
+    // looping through extension list and storing items of same extension within the directory
+    this.extensionList.forEach(extension => {
+
+      // creating extension object inside extensionInfo
+      extensionInfo = {
+
+        ...extensionInfo,
+
+        [extension]: [],
+      }
+
+      // looping through each item of directory items to find extensions of items
+      this.directoryItems.forEach(item => {
+
+        // extension of item
+       const itemExtension = this.directoryInfo[item].extension;
+       
+      //  checking if the current extension being tracked matches with the item extension
+       if (itemExtension == extension) {
+
+        extensionInfo[extension] = [
+
+          ...extensionInfo[extension],
+
+          item,
+        ];
+       }
+      });
+
+      extensionInfo[extension] = {
+
+        // the previous list of items under the same extension
+        ...extensionInfo[extension],
+
+        // the number of items having that extension
+        'noOfItems': extensionInfo[extension].length,
+        
+        // type of extension
+        // 'type': 
+      }
+    });
+
+    return extensionInfo;
+  }
 
 
   // function to print details of individual items inside the directory (logs this.directoryPath)
@@ -140,6 +193,11 @@ class importDirectory {
   listExtensionsList = () => {
 
     console.log(this.extensionList);
+  }
+
+  listExtensionsInfo = () => {
+
+    console.log(this.extensionInfo);
   }
 }
 
@@ -159,8 +217,9 @@ const createMainWidow = () => {
   mainWindow.center();
 
   const downlaodsDirectory = new importDirectory('C:/users/'+username+'/Downloads');
-  downlaodsDirectory.listDirectoryInfo();
-  downlaodsDirectory.listExtensionsList();
+  // downlaodsDirectory.listDirectoryInfo();
+  // downlaodsDirectory.listExtensionsList();
+  downlaodsDirectory.listExtensionsInfo();
 }
 
 
