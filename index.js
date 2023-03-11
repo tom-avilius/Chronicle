@@ -25,6 +25,10 @@ class ImportDirectory {
 
   constructor(directoryPath = '') {
 
+    // generating all the extensions
+    const extensions = new Json('./components/assets/extensions-list.json', {read: true});
+    this.possibleExtensions = extensions.fileContents;
+
     this.directoryPath = directoryPath;
 
     // calling import directory to get the contents of the directory specified
@@ -126,12 +130,19 @@ class ImportDirectory {
   }
 
 
+  // function to judge the type of file using its extension
+  getFileType = (extension="") => {
+
+  return this.possibleExtensions[extension.replace('.', '').toLowerCase()];
+}
+
+
   // function to group elements inside the directory info according to their extensions
   // it returns an object of objects with the following details
   // object name is the extension itself and details it contains:
   // number of occurences
   // extension name including the dot
-  // type of extension example png , jpg are all images
+  // file type
   // this list will not include any directory
   groupByExtension = () => {
 
@@ -148,6 +159,11 @@ class ImportDirectory {
 
         [extension]: [],
       }
+
+      // calling getFileType to know the type of extension
+      var fileType = this.getFileType(extension)+'';
+      const start = fileType.charAt(0).toUpperCase()
+      fileType = start+fileType.substring(1);
 
       // looping through each item of directory items to find extensions of items
       this.directoryItems.forEach(item => {
@@ -174,17 +190,12 @@ class ImportDirectory {
 
         // the number of items having that extension
         'noOfItems': extensionInfo[extension].length,
+        // the type of file
+        'type': fileType,
       }
     });
 
     return extensionInfo;
-  }
-
-
-  // function to judge the type of file using its extension
-  judgeByType = () => {
-
-
   }
 
 
@@ -260,9 +271,9 @@ const createMainWidow = () => {
   const downlaodsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
   // downlaodsDirectory.listDirectoryInfo();
   // downlaodsDirectory.listExtensionsList();
-  // downlaodsDirectory.listExtensionsInfo();
-  const extensions = new Json('./components/assets/all-file-extensions.json', {read: true});
-  extensions.listFileContents();
+  downlaodsDirectory.listExtensionsInfo();
+  // const extensions = new Json('./components/assets/extensions-list.json', {read: true});
+  // console.log(extensions.fileContents)
 }
 
 

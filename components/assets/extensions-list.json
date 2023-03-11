@@ -1,0 +1,711 @@
+{
+    "1.ada": [
+      "Code"
+    ],
+    "2.ada": [
+      "Code"
+    ],
+    "3dm": [
+      "Images"
+    ],
+    "3ds": [
+      "Images"
+    ],
+    "3g2": [
+      "Videos"
+    ],
+    "3gp": [
+      "Videos"
+    ],
+    "7z": [
+      "Archives"
+    ],
+    "a": [
+      "Archives"
+    ],
+    "aac": [
+      "audio"
+    ],
+    "aaf": [
+      "Videos"
+    ],
+    "ada": [
+      "Code"
+    ],
+    "adb": [
+      "Code"
+    ],
+    "ads": [
+      "Code"
+    ],
+    "ai": [
+      "Images"
+    ],
+    "aiff": [
+      "audio"
+    ],
+    "ape": [
+      "audio"
+    ],
+    "apk": [
+      "Archives"
+    ],
+    "ar": [
+      "Archives"
+    ],
+    "asf": [
+      "Videos"
+    ],
+    "asm": [
+      "Code"
+    ],
+    "au": [
+      "audio"
+    ],
+    "avchd": [
+      "Videos"
+    ],
+    "avi": [
+      "Videos"
+    ],
+    "azw": [
+      "book"
+    ],
+    "azw1": [
+      "book"
+    ],
+    "azw3": [
+      "book"
+    ],
+    "azw4": [
+      "book"
+    ],
+    "azw6": [
+      "book"
+    ],
+    "bas": [
+      "Code"
+    ],
+    "bash": [
+      "Code",
+      "Executables"
+    ],
+    "bat": [
+      "Code",
+      "Executables"
+    ],
+    "bin": [
+      "Executables"
+    ],
+    "bmp": [
+      "Images"
+    ],
+    "bz2": [
+      "Archives"
+    ],
+    "c": [
+      "Code"
+    ],
+    "c++": [
+      "Code"
+    ],
+    "cab": [
+      "Archives"
+    ],
+    "cbl": [
+      "Code"
+    ],
+    "cbr": [
+      "book"
+    ],
+    "cbz": [
+      "book"
+    ],
+    "cc": [
+      "Code"
+    ],
+    "class": [
+      "Code"
+    ],
+    "clj": [
+      "Code"
+    ],
+    "cob": [
+      "Code"
+    ],
+    "command": [
+      "Executables"
+    ],
+    "cpio": [
+      "Archives"
+    ],
+    "cpp": [
+      "Code"
+    ],
+    "crx": [
+      "Executables"
+    ],
+    "cs": [
+      "Code"
+    ],
+    "csh": [
+      "Code",
+      "Executables"
+    ],
+    "css": [
+      "web"
+    ],
+    "csv": [
+      "Sheets"
+    ],
+    "cxx": [
+      "Code"
+    ],
+    "d": [
+      "Code"
+    ],
+    "dds": [
+      "Images"
+    ],
+    "deb": [
+      "Archives"
+    ],
+    "diff": [
+      "Code"
+    ],
+    "dmg": [
+      "Archives"
+    ],
+    "doc": [
+      "text"
+    ],
+    "docx": [
+      "text"
+    ],
+    "drc": [
+      "Videos"
+    ],
+    "dwg": [
+      "Images"
+    ],
+    "dxf": [
+      "Images"
+    ],
+    "e": [
+      "Code"
+    ],
+    "ebook": [
+      "text"
+    ],
+    "egg": [
+      "Archives"
+    ],
+    "el": [
+      "Code"
+    ],
+    "eot": [
+      "font"
+    ],
+    "eps": [
+      "Images"
+    ],
+    "epub": [
+      "book"
+    ],
+    "exe": [
+      "Executables"
+    ],
+    "f": [
+      "Code"
+    ],
+    "f77": [
+      "Code"
+    ],
+    "f90": [
+      "Code"
+    ],
+    "fish": [
+      "Code",
+      "Executables"
+    ],
+    "flac": [
+      "audio"
+    ],
+    "flv": [
+      "Videos"
+    ],
+    "for": [
+      "Code"
+    ],
+    "fth": [
+      "Code"
+    ],
+    "ftn": [
+      "Code"
+    ],
+    "gif": [
+      "Images"
+    ],
+    "go": [
+      "Code"
+    ],
+    "gpx": [
+      "Images"
+    ],
+    "groovy": [
+      "Code"
+    ],
+    "gsm": [
+      "audio"
+    ],
+    "gz": [
+      "Archives"
+    ],
+    "h": [
+      "Code"
+    ],
+    "hh": [
+      "Code"
+    ],
+    "hpp": [
+      "Code"
+    ],
+    "hs": [
+      "Code"
+    ],
+    "htm": [
+      "Code",
+      "web"
+    ],
+    "html": [
+      "Code",
+      "web"
+    ],
+    "hxx": [
+      "Code"
+    ],
+    "ics": [
+      "Sheets"
+    ],
+    "iso": [
+      "Archives"
+    ],
+    "it": [
+      "audio"
+    ],
+    "jar": [
+      "Archives"
+    ],
+    "java": [
+      "Code"
+    ],
+    "jpeg": [
+      "Images"
+    ],
+    "jpg": [
+      "Images"
+    ],
+    "js": [
+      "Code",
+      "web"
+    ],
+    "jsp": [
+      "Code"
+    ],
+    "jsx": [
+      "Code",
+      "web"
+    ],
+    "kml": [
+      "Images"
+    ],
+    "kmz": [
+      "Images"
+    ],
+    "ksh": [
+      "Code",
+      "Executables"
+    ],
+    "kt": [
+      "Code"
+    ],
+    "less": [
+      "web"
+    ],
+    "lha": [
+      "Archives"
+    ],
+    "lhs": [
+      "Code"
+    ],
+    "lisp": [
+      "Code"
+    ],
+    "log": [
+      "text"
+    ],
+    "lua": [
+      "Code"
+    ],
+    "m": [
+      "Code"
+    ],
+    "m2v": [
+      "Videos"
+    ],
+    "m3u": [
+      "audio"
+    ],
+    "m4": [
+      "Code"
+    ],
+    "m4a": [
+      "audio"
+    ],
+    "m4p": [
+      "Videos"
+    ],
+    "m4v": [
+      "Videos"
+    ],
+    "mar": [
+      "Archives"
+    ],
+    "max": [
+      "Images"
+    ],
+    "md": [
+      "text"
+    ],
+    "mid": [
+      "audio"
+    ],
+    "mkv": [
+      "Videos"
+    ],
+    "mng": [
+      "Videos"
+    ],
+    "mobi": [
+      "book"
+    ],
+    "mod": [
+      "audio"
+    ],
+    "mov": [
+      "Videos"
+    ],
+    "mp2": [
+      "Videos"
+    ],
+    "mp3": [
+      "audio"
+    ],
+    "mp4": [
+      "Videos"
+    ],
+    "mpa": [
+      "audio"
+    ],
+    "mpe": [
+      "Videos"
+    ],
+    "mpeg": [
+      "Videos"
+    ],
+    "mpg": [
+      "Videos"
+    ],
+    "mpv": [
+      "Videos"
+    ],
+    "msg": [
+      "text"
+    ],
+    "msi": [
+      "Executables"
+    ],
+    "mxf": [
+      "Videos"
+    ],
+    "nim": [
+      "Code"
+    ],
+    "nsv": [
+      "Videos"
+    ],
+    "odp": [
+      "slide"
+    ],
+    "ods": [
+      "Sheets"
+    ],
+    "odt": [
+      "text"
+    ],
+    "ogg": [
+      "Videos"
+    ],
+    "ogm": [
+      "Videos"
+    ],
+    "ogv": [
+      "Videos"
+    ],
+    "org": [
+      "text"
+    ],
+    "otf": [
+      "font"
+    ],
+    "pages": [
+      "text"
+    ],
+    "pak": [
+      "Archives"
+    ],
+    "patch": [
+      "Code"
+    ],
+    "pdf": [
+      "text"
+    ],
+    "pea": [
+      "Archives"
+    ],
+    "php": [
+      "Code",
+      "web"
+    ],
+    "pl": [
+      "Code"
+    ],
+    "pls": [
+      "audio"
+    ],
+    "png": [
+      "Images"
+    ],
+    "po": [
+      "Code"
+    ],
+    "pp": [
+      "Code"
+    ],
+    "ppt": [
+      "slide"
+    ],
+    "ps": [
+      "Images"
+    ],
+    "psd": [
+      "Images"
+    ],
+    "py": [
+      "Code"
+    ],
+    "qt": [
+      "Videos"
+    ],
+    "r": [
+      "Code"
+    ],
+    "ra": [
+      "audio"
+    ],
+    "rar": [
+      "Archives"
+    ],
+    "rb": [
+      "Code"
+    ],
+    "rm": [
+      "Videos"
+    ],
+    "rmvb": [
+      "Videos"
+    ],
+    "roq": [
+      "Videos"
+    ],
+    "rpm": [
+      "Archives"
+    ],
+    "rs": [
+      "Code"
+    ],
+    "rst": [
+      "text"
+    ],
+    "rtf": [
+      "text"
+    ],
+    "s": [
+      "Code"
+    ],
+    "s3m": [
+      "audio"
+    ],
+    "s7z": [
+      "Archives"
+    ],
+    "scala": [
+      "Code"
+    ],
+    "scss": [
+      "web"
+    ],
+    "sh": [
+      "Code",
+      "Executables"
+    ],
+    "shar": [
+      "Archives"
+    ],
+    "sid": [
+      "audio"
+    ],
+    "srt": [
+      "Videos"
+    ],
+    "svg": [
+      "Images"
+    ],
+    "svi": [
+      "Videos"
+    ],
+    "swg": [
+      "Code"
+    ],
+    "swift": [
+      "Code"
+    ],
+    "tar": [
+      "Archives"
+    ],
+    "tbz2": [
+      "Archives"
+    ],
+    "tex": [
+      "text"
+    ],
+    "tga": [
+      "Images"
+    ],
+    "tgz": [
+      "Archives"
+    ],
+    "thm": [
+      "Images"
+    ],
+    "tif": [
+      "Images"
+    ],
+    "tiff": [
+      "Images"
+    ],
+    "tlz": [
+      "Archives"
+    ],
+    "ttf": [
+      "font"
+    ],
+    "txt": [
+      "text"
+    ],
+    "v": [
+      "Code"
+    ],
+    "vb": [
+      "Code"
+    ],
+    "vcf": [
+      "Sheets"
+    ],
+    "vcxproj": [
+      "Code"
+    ],
+    "vob": [
+      "Videos"
+    ],
+    "war": [
+      "Archives"
+    ],
+    "wasm": [
+      "web"
+    ],
+    "wav": [
+      "audio"
+    ],
+    "webm": [
+      "Videos"
+    ],
+    "webp": [
+      "Images"
+    ],
+    "whl": [
+      "Archives"
+    ],
+    "wma": [
+      "audio"
+    ],
+    "wmv": [
+      "Videos"
+    ],
+    "woff": [
+      "font"
+    ],
+    "woff2": [
+      "font"
+    ],
+    "wpd": [
+      "text"
+    ],
+    "wps": [
+      "text"
+    ],
+    "xcf": [
+      "Images"
+    ],
+    "xCodeproj": [
+      "Code"
+    ],
+    "xls": [
+      "Sheets"
+    ],
+    "xlsx": [
+      "Sheets"
+    ],
+    "xm": [
+      "audio"
+    ],
+    "xml": [
+      "Code"
+    ],
+    "xpi": [
+      "Archives"
+    ],
+    "xz": [
+      "Archives"
+    ],
+    "yuv": [
+      "Images",
+      "Videos"
+    ],
+    "zip": [
+      "Archives"
+    ],
+    "zipx": [
+      "Archives"
+    ],
+    "zsh": [
+      "Code",
+      "Executables"
+    ],
+    "rmskin": [
+        "Rainmeter Skins"
+    ], 
+    "jfif": [
+        "Images"
+    ]
+  }
