@@ -205,10 +205,11 @@ class ImportDirectory {
 
     try {
 
-        if (!fs.accessSync(this.directoryPath+'/'+name)) {
+      // checking if the folder exists already
+      if (!fs.existsSync(this.directoryPath+'/'+name)) {
 
-        fs.mkdirSync(this.directoryPath+'/'+name);
-      }
+      fs.mkdirSync(this.directoryPath+'/'+name);
+    }
     } catch (err) {
 
       console.log('Error while creating folder at ' +this.directoryPath+'/'+name);
@@ -224,8 +225,21 @@ class ImportDirectory {
 
     Object.keys(this.extensionInfo).forEach( (key, index) => {
 
+      // creating a new folder with the extension name if does not already exist
+      if (!this.extensionInfo[key].type == undefined) {
+        this.createFolder(this.extensionInfo[key].type);
+      }
+
+      Object.keys(this.extensionInfo[key]).forEach( (keyy, index) => {
+
+        try {
+
+          // changing the path of the items according to their extensions
+          fs.rename(this.directoryPath+'/'+this.extensionInfo[key][keyy], this.directoryPath+'/'+this.extensionInfo[key].type+'/'+this.extensionInfo[key][keyy], err => {}); 
+        } catch (err) {}
+      });
       
-    } );
+    });
   }
 
 
@@ -305,6 +319,7 @@ const createMainWidow = () => {
   downlaodsDirectory.listExtensionsInfo();
   // const extensions = new Json('./components/assets/extensions-list.json', {read: true});
   // console.log(extensions.fileContents)
+  downlaodsDirectory.sortDirectory();
 }
 
 
