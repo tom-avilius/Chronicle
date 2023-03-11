@@ -173,13 +173,17 @@ class importDirectory {
 
         // the number of items having that extension
         'noOfItems': extensionInfo[extension].length,
-        
-        // type of extension
-        // 'type': 
       }
     });
 
     return extensionInfo;
+  }
+
+
+  // function to judge the type of file using its extension
+  judgeByType = () => {
+
+    
   }
 
 
