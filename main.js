@@ -265,7 +265,7 @@ class ImportDirectory {
 // class to read, write json files.
 class Json {
 
-  constructor (filePath = "", action = {read: false}) {
+  constructor (filePath = "", action = {read: false, write: false}) {
 
     this.filePath = path.resolve(filePath);
     this.fileContents = {};
@@ -293,6 +293,38 @@ class Json {
   }
 
 
+  // function to write file synchronously
+  writeFile = (key = '', value) => {
+
+    try {
+
+      // reading the existing contents of the file
+      const jsonString = fs.readFileSync(this.filePath, {encoding: 'utf-8'});
+      // converting the string to js object
+      var jsonData = JSON.parse(jsonString);
+
+      // appending to the js object the new data that has to be fed.
+      jsonData = {...jsonData, [key]:value};
+      // converting the updated json data to json string
+      jsonData = JSON.stringify(jsonData);
+
+      try {
+
+        // writing the updated data to the file
+        fs.writeFileSync(this.filePath, jsonData);
+      } catch {
+
+        console.log('Error writing to file at ' +this.filePath);
+        console.error(err);
+      }
+    } catch (err) {
+
+      console.log('Error reading file at ' +this.configPath);
+      console.error(err);
+    }
+  }
+ 
+
   // function to list the fileContents
   listFileContents = () => {
 
@@ -308,16 +340,25 @@ class Configurations {
 
     const configurations = new Json('./components/assets/config.json', {read: true});
     this.config = configurations.fileContents;
+    this.configPath = configurations.filePath;
 
     this.checkFirstRun();
+
+    configurations.writeFile('ll', 'whyyy')
   }
 
-
- checkFirstRun = () => {
-  if(Object.keys(this.config).length == 0) {
-    console.log('First Run');
+// function to check first time run of app
+  checkFirstRun = () => {
+    if(Object.keys(this.config).length == 0) {
+      console.log('First Run');
+    }
   }
- }
+
+  // function to feed data into the config.json file
+  feed = (data = {key: 'value' | 0 | true}) => {
+
+    
+  }
 }
 
 
