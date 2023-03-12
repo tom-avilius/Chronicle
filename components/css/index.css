@@ -1,0 +1,6 @@
+
+body header {
+
+    height: 30px;
+    -webkit-app-region: drag;
+}

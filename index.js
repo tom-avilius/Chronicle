@@ -311,12 +311,19 @@ const createMainWidow = () => {
   downlaodsDirectory.sortDirectory();
 
   // creating the main browser window
-  const mainWindow = new BrowserWindow();
+  const mainWindow = new BrowserWindow({
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      // color: '#2f3241',
+      symbolColor: '#74b1be',
+      height: 32
+    }
+  });
 
   // centering the main window
   mainWindow.center();
 
-  mainWindow.setMenu(null);
+  mainWindow.loadFile('./components/html/index.html');
 }
 
 
