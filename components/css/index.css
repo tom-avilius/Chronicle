@@ -4,3 +4,16 @@ body header {
     height: 30px;
     -webkit-app-region: drag;
 }
+
+body {
+    /* height: 100vh; */
+    background-color: #00121de8;
+}
+
+.navbar {
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 3% 7%;
+}

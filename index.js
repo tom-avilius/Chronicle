@@ -314,8 +314,8 @@ const createMainWidow = () => {
   const mainWindow = new BrowserWindow({
     titleBarStyle: 'hidden',
     titleBarOverlay: {
-      // color: '#2f3241',
-      symbolColor: '#74b1be',
+      color: '#172731',
+      symbolColor: '#3A9188',
       height: 32
     }
   });
