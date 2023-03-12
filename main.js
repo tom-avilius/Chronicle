@@ -265,7 +265,7 @@ class ImportDirectory {
 // class to read, write json files.
 class Json {
 
-  constructor (filePath = "", action = {read: false, write: false}) {
+  constructor (filePath = "", action = {read: false, write: false}, writeKey='', writeValue='') {
 
     this.filePath = path.resolve(filePath);
     this.fileContents = {};
@@ -273,6 +273,11 @@ class Json {
     if(action.read == true) {
 
       this.fileContents = this.readFile();
+    } 
+
+    if (action.write == true) {
+
+      this.writeFile(writeKey+'', writeValue);
     }
   }
 
@@ -338,13 +343,11 @@ class Configurations {
 
   constructor () {
 
-    const configurations = new Json('./components/assets/config.json', {read: true});
+    this.configurations = new Json('./components/assets/config.json', {read: true});
     this.config = configurations.fileContents;
     this.configPath = configurations.filePath;
 
     this.checkFirstRun();
-
-    configurations.writeFile('ll', 'whyyy')
   }
 
 // function to check first time run of app
@@ -355,9 +358,12 @@ class Configurations {
   }
 
   // function to feed data into the config.json file
-  feed = (data = {key: 'value' | 0 | true}) => {
+  feed = (key, value) => {
 
-    
+    // feeding the data to the config file
+    this.configurations.writeFile(key+'', value);
+    // updating the config info
+    this.config = this.configurations.readFile();
   }
 }
 
