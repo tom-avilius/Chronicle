@@ -35,7 +35,7 @@ button {
   width: auto;
 }
 
-button:hover {
+button:hover, button:focus, button:active{
   border-color: #0C7B93;
 }
 

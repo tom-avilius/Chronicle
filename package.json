@@ -2,7 +2,7 @@
   "name": "chronicle",
   "version": "1.0.0",
   "description": "A cross platform folder management system with current focus the on downloads folder.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron ."
   },

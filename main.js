@@ -301,6 +301,26 @@ class Json {
 }
 
 
+// class to manage app configurations
+class Configurations {
+
+  constructor () {
+
+    const configurations = new Json('./components/assets/config.json', {read: true});
+    this.config = configurations.fileContents;
+
+    this.checkFirstRun();
+  }
+
+
+ checkFirstRun = () => {
+  if(Object.keys(this.config).length == 0) {
+    console.log('First Run');
+  }
+ }
+}
+
+
 // --------------------------------------------------------------------------------------------------
 
 // Function where the main window is creation is defined.
@@ -324,6 +344,8 @@ const createMainWidow = () => {
   mainWindow.center();
 
   mainWindow.loadFile('./components/html/index.html');
+
+  const configurations = new Configurations();
 }
 
 
