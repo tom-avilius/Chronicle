@@ -10,6 +10,37 @@ body {
     background-color: #00121de8;
 }
 
+button {
+
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #3A9188;
+  color: white;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 400;
+  justify-content: center;
+  margin: 0;
+  min-height: 3rem;
+  padding: 1% 4%;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+button:hover {
+  border-color: #0C7B93;
+}
+
+
+
 .navbar {
 
     display: flex;
