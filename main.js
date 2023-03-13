@@ -2,7 +2,7 @@
 // all imports, constants and variable declarations are mentioned below
 
 // importing app and BrowserWindow from electron.
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 
 // importing the file-system module
 const fs = require('fs');
@@ -339,22 +339,23 @@ class Json {
 
 
 // class to manage app configurations
-class Configurations {
+class Configuration {
 
   constructor () {
 
     this.configurations = new Json('./components/assets/config.json', {read: true});
-    this.config = configurations.fileContents;
-    this.configPath = configurations.filePath;
+    this.config = this.configurations.fileContents;
+    this.configPath = this.configurations.filePath;
 
-    this.checkFirstRun();
+    this.firtTimeRun = this.checkFirstRun();
   }
 
 // function to check first time run of app
   checkFirstRun = () => {
     if(Object.keys(this.config).length == 0) {
-      console.log('First Run');
-    }
+      
+      return true;
+    } else {return false;}
   }
 
   // function to feed data into the config.json file
@@ -374,8 +375,8 @@ class Configurations {
 // this method is called when the app is ready.
 const createMainWidow = () => {
 
-  const downlaodsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
-  downlaodsDirectory.sortDirectory();
+  // const downlaodsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
+  // downlaodsDirectory.sortDirectory();
 
   // creating the main browser window
   const mainWindow = new BrowserWindow({
@@ -384,6 +385,11 @@ const createMainWidow = () => {
       color: '#172731',
       symbolColor: '#3A9188',
       height: 32
+    },
+    
+    webPreferences: {
+
+      preload: path.join(__dirname, 'components/html/js/indexPreload.js'),
     }
   });
 
@@ -392,7 +398,74 @@ const createMainWidow = () => {
 
   mainWindow.loadFile('./components/html/index.html');
 
-  const configurations = new Configurations();
+  // creating configurations object
+  const config = new Configuration();
+
+  // sending the first time run info as true or false.
+  mainWindow.webContents.send('run-info', config.firtTimeRun);
+
+  // listening to the sort-downloads event from the renderer 
+  // flag can be true or false
+  // if the flag is true downloads directory will be sorted
+  ipcMain.on('sort-downloads', (event, flag) => {
+
+    // checking if the flag is true
+    // flag will only be true if the application was started for the first time that infers that the config.json is empty
+    if (flag) {
+
+      // creating a secondary window that points to the importDownloads.html file
+      createSecondaryWindow('./components/html/importDownloads.html');
+
+      // listening to sort-downloads-click event
+      // this event will be emitted by the importDownloads.js if the user choses to sort the downlaods directory
+      // flag can be true or false
+      ipcMain.on('sort-downloads-click', (event, flag) => {
+
+        // checking if the flag is true
+        // flag will only be true when to the user clicks on the yes button
+        // secondary window will be closed by the importDowloads.js file automatically when either yes or no button is clicked.
+        if (flag) {
+
+          // importing the downloads directory
+          var downloadsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
+          // sorting the downloads directory
+          downloadsDirectory.sortDirectory();
+          // feeding this info to the config.json
+          // this will allow Chronicle to know which directory to import at startup
+          config.feed('import', [downloadsDirectory.directoryPath+'']);
+        }
+      })
+    }
+  })
+   
+}
+
+
+// function to create secondary window
+const createSecondaryWindow = (htmlFilePath='', width=700, height=250) => {
+
+  // creating additional browser window
+  const browserWindow = new BrowserWindow( {
+    titleBarStyle: 'hidden',
+    // titleBarOverlay: {
+    //   color: '#172731',
+    //   symbolColor: '#3A9188',
+    //   height: 32
+    // },
+
+    height: height,
+    width: width,
+    
+    webPreferences: {
+
+      preload: path.join(__dirname, 'components/html/js/indexPreload.js'),
+  }});
+
+  // centering the secondary window
+  browserWindow.center();
+
+  // loading the html file
+  browserWindow.loadFile(path.resolve(htmlFilePath));
 }
 
 

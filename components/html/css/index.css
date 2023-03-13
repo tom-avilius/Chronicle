@@ -39,7 +39,29 @@ button:hover, button:focus, button:active{
   border-color: #0C7B93;
 }
 
+.downloads-dialog-wrapper {
 
+  text-align: center;
+}
+
+.downloads-dialog-button-wrapper {
+
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30%;
+}
+
+.downloads-dialog-button-wrapper button {
+
+  padding: 0 20px;
+}
+
+h2 {
+
+  color: white;
+  font-weight: 400;
+
+}
 
 .navbar {
 
