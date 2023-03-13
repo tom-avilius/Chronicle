@@ -401,44 +401,36 @@ const createMainWidow = () => {
   // creating configurations object
   const config = new Configuration();
 
-  // sending the first time run info as true or false.
-  mainWindow.webContents.send('run-info', config.firtTimeRun);
+  // checking if the application is run for the first time that infers that the config.json is empty
+  if(config.firtTimeRun) {
 
-  // listening to the sort-downloads event from the renderer 
-  // flag can be true or false
-  // if the flag is true downloads directory will be sorted
-  ipcMain.on('sort-downloads', (event, flag) => {
+    config.feed('Welcome', true);
 
-    // checking if the flag is true
-    // flag will only be true if the application was started for the first time that infers that the config.json is empty
-    if (flag) {
+    // creating a secondary window that points to the importDownloads.html file
+    createSecondaryWindow('./components/html/importDownloads.html');
 
-      // creating a secondary window that points to the importDownloads.html file
-      createSecondaryWindow('./components/html/importDownloads.html');
+    // listening to sort-downloads-click event
+    // this event will be emitted by the importDownloads.js if the user choses to sort the downlaods directory
+    // flag can be true or false
+    ipcMain.on('sort-downloads-click', (event, flag) => {
 
-      // listening to sort-downloads-click event
-      // this event will be emitted by the importDownloads.js if the user choses to sort the downlaods directory
-      // flag can be true or false
-      ipcMain.on('sort-downloads-click', (event, flag) => {
+      // checking if the flag is true
+      // flag will only be true when to the user clicks on the yes button
+      // secondary window will be closed by the importDowloads.js file automatically when either yes or no button is clicked.
+      if (flag) {
 
-        // checking if the flag is true
-        // flag will only be true when to the user clicks on the yes button
-        // secondary window will be closed by the importDowloads.js file automatically when either yes or no button is clicked.
-        if (flag) {
-
-          // importing the downloads directory
-          var downloadsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
-          // sorting the downloads directory
-          downloadsDirectory.sortDirectory();
-          // feeding this info to the config.json
-          // this will allow Chronicle to know which directory to import at startup
-          config.feed('import', [downloadsDirectory.directoryPath+'']);
-        }
-      })
-    }
-  })
-   
+        // importing the downloads directory
+        var downloadsDirectory = new ImportDirectory('C:/users/'+username+'/Downloads');
+        // sorting the downloads directory
+        downloadsDirectory.sortDirectory();
+        // feeding this info to the config.json
+        // this will allow Chronicle to know which directory to import at startup
+        config.feed('import', [downloadsDirectory.directoryPath+'']);
+      }
+    })
+  }
 }
+
 
 
 // function to create secondary window
